@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f6f0f0;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        input[type="email"],
+        input[type="password"],
+        input[type="submit"],
+        button.social-button {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            border-color: #f5e90d;
+            box-sizing: border-box;
+            background-color: #f6f0f0;
+            color: #000;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        input[type="submit"] {
+            background-color: #565430;
+            color: #fff;
+        }
+
+        input[type="submit"]:hover,
+        button.social-button:hover {
+            background-color: #457b47;
+            color: #fff;
+        }
+
+        .social-button {
+            background-color: rgba(198, 198, 27, 0.466);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social-icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+
+        .forgot-password {
+            font-style: italic;
+            text-align: right;
+            margin-bottom: 10px;
+            font-size: small;
+        }
+
+        a {
+            color: #f5e90d;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: #565430;
+        }
+
+        a span {
+            font-weight: bold;
+        }
+
+        h1, h5 {
+            text-align: center;
+            color: #333;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sign In</h1>
+        <h5>Welcome Back!</h5>
+
+        <form action="#" method="post">
+            <input type="email" name="email" placeholder="Business Email" required>
+            <input type="password" name="password" placeholder="Password" required>
+
+            <div class="forgot-password">
+                <a href="#">Forgot Password?</a>
+            </div>
+
+            <input type="submit" value="Sign Up">
+            
+            <button class="social-button" onclick="continueWithGoogle()">
+                <img class="social-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google logo">
+                Continue with Google
+            </button>
+
+            <button class="social-button" onclick="continueWithFacebook()">
+                <img class="social-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook logo">
+                Continue with Facebook
+            </button>
+
+            <p>Don't have an account? <a href="Sign_Up.html">Create an account <span>here</span></a>.</p>
+        </form>
+    </div>
+
+    <script>
+        function continueWithGoogle() {
+            window.location.href = "https://accounts.google.com/";
+        }
+
+        function continueWithFacebook() {
+            window.location.href = "https://www.facebook.com/";
+        }
+    </script>
+</body>
+</html>
