@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Summary of items</title>
+    <style>
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f6f6f6;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            position: fixed;
+            width: 100%;
+            align-items: center;
+            background-color: #565430;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        header:hover, footer:hover {
+            cursor: pointer;
+        }
+        #icon {
+            display: flex;
+            justify-items: space-between;
+        }
+
+        header img {
+            height: 30px;
+        }
+
+        .formdiv {
+            padding: 80px 20px 80px 20px;
+        }
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        form h3 {
+            margin-top: 0;
+            font-size: 20px;
+            color: #333;
+        }
+
+        input[type="submit"] {
+            background-color: #565430;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #b9b651;
+        }
+
+        footer {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #565430;
+            padding: 10px;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        footer img {
+            height: 30px;
+        }
+
+        #logo {
+            font-size: xx-large;
+        }
+
+        .box {
+            width: 200px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            margin: 20px;
+            display: inline-block;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .container-box {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 50px;
+        }
+
+        /* #addItemButton {
+            background-color: antiquewhite;
+            width: 200px;
+            padding: 8px;
+            margin: 200px;
+        } */
+
+            #addItemButton {
+            background-color: antiquewhite;
+            width: 100px;
+            padding: 8px;
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .items-box {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            }
+        
+        .ibox {
+            width: 156px;
+            height: 50px;
+            padding: 10px;
+            border: 5px solid gray;
+        }
+
+        #body-container {
+            padding: 50px 20px 70px 20px; 
+        }
+        
+/* button for smaller screens */
+/* @media screen and (max-width: 768px) {
+    #addItemButton {
+        width: 150px;
+        padding: 6px;
+        bottom: 10px;
+        right: 10px;
+    }
+}  */
+/* button position for even smaller screens */
+
+/* @media screen and (max-width: 480px) {
+    #addItemButton {
+        width: 120px;
+        padding: 4px;
+        bottom: 5px;
+        right: 5px;
+    }
+} */
+
+    </style>
+</head>
+<body>
+    <header>
+        <div style="padding: 10px;">
+            <a href="./Item.html">
+                <img id="logo" src="/Images/icons/logo.png" alt="items icon">
+            </a>
+        </div>
+
+        <div style="padding: 10px;" id="icon">
+            <span> <img src="/Images/icons/icons8-notification-48.png" alt="notifications icon"> </span>
+            <span style="margin-left: 40px;"> <img src="/Images/icons/icons8-account-60.png" alt="profile icon"> </span>
+        </div>
+    </header>
+    <div id="body-container">
+        <div style=";">
+            <!-- Content before added items -->
+            <h3>Welcome</h3>
+            <p>Your summary: <span id="itemCount">0</span> Total Inventory</p>
+        </div>
+
+
+        <div class="container-box" id="itemContainer">
+            <!-- Boxes for displaying items will be added here -->
+        </div>
+
+        <div class="items-box">
+            <div class="ibox"></div>
+            <div class="ibox"></div>
+            <div class="ibox"></div>
+            <div class="ibox"></div>
+        </div>
+        <button id="addItemButton">Add Item</button>
+    </div>
+    <footer>
+        <a href="./Page2.html"><img src="/Images/icons/icons8-dashboard-32.png" alt="dashboard icon"></a>
+        <a href="./Item.html"><img src="/Images/icons/icons8-items-50.png" alt="items icon"></a>
+        <a href="./Sign-In.html"><img src="/Images/icons/icons8-search-64.png" alt="search icon"></a>
+        <img src="/Images/icons/icons8-menu-24.png" alt="menu icon">
+    </footer>
+
+
+        <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const itemContainer = document.getElementById('itemContainer');
+        const addItemButton = document.getElementById('addItemButton');
+        const itemCountSpan = document.getElementById('itemCount');
+
+        let itemCount = 0;
+
+        // Function to add an item box
+        function addItemBox(itemName, itemDetails) {
+            const newItemBox = document.createElement('div');
+            newItemBox.classList.add('box');
+
+            const itemContent = document.createElement('div');
+            itemContent.innerHTML = `<strong>${itemName}</strong><br>${itemDetails}`;
+            newItemBox.appendChild(itemContent);
+
+            itemContainer.appendChild(newItemBox);
+            itemCount++;
+            itemCountSpan.textContent = itemCount;
+        }
+
+        // Event listener for "Add Item" button
+        addItemButton.addEventListener('click', function() {
+            const itemName = prompt("Enter item name:");
+            const itemDetails = prompt("Enter item details:");
+            if (itemName && itemDetails) {
+                addItemBox(itemName, itemDetails);
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
