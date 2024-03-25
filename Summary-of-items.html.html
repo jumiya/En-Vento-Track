@@ -12,6 +12,7 @@
             font-family: Arial, sans-serif;
             margin: 0;
             background-color: #f6f6f6;
+            padding-bottom: 80px; /* Ensure space for the "Add Item" button */
         }
 
         header {
@@ -22,6 +23,7 @@
             align-items: center;
             background-color: #565430;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 100; /* Ensure header stays on top */
         }
 
         header:hover, footer:hover {
@@ -90,7 +92,7 @@
         }
 
         .box {
-            width: 200px;
+            width: calc(25% - 40px); /* Adjusted width for four items per row with gap */
             padding: 20px;
             background-color: #f9f9f9;
             border: 2px solid #ddd;
@@ -99,74 +101,95 @@
             display: inline-block;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             text-align: center;
+            vertical-align: top; /* Align boxes to the top */
         }
 
         .container-box {
             display: flex;
-            flex-wrap: wrap;
             justify-content: center;
+            align-items: flex-start; 
+            flex-wrap: wrap; 
             margin-top: 50px;
         }
 
-        /* #addItemButton {
-            background-color: antiquewhite;
-            width: 200px;
-            padding: 8px;
-            margin: 200px;
-        } */
-
-            #addItemButton {
-            background-color: antiquewhite;
-            width: 100px;
-            padding: 8px;
-            position: fixed;
-            bottom: 100px;
-            right: 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
+        .ibox {
+            width: 130px; 
+            height: 70px; 
+            padding: 20px; 
+            border: 5px solid gray;
+            border-radius: 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin: 5px;
+            background-color: gray;
         }
 
-        .items-box {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            }
-        
-        .ibox {
-            width: 156px;
-            height: 50px;
-            padding: 10px;
-            border: 5px solid gray;
+        .ibox .i-icon {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            width: 25px;
+            height: 20px;
         }
 
         #body-container {
             padding: 50px 20px 70px 20px; 
         }
-        
-/* button for smaller screens */
-/* @media screen and (max-width: 768px) {
-    #addItemButton {
-        width: 150px;
-        padding: 6px;
-        bottom: 10px;
-        right: 10px;
-    }
-}  */
-/* button position for even smaller screens */
 
-/* @media screen and (max-width: 480px) {
-    #addItemButton {
-        width: 120px;
-        padding: 4px;
-        bottom: 5px;
-        right: 5px;
-    }
-} */
+        #addItemButton {
+            background-color: gray;
+            color: white;
+            width: 100px;
+            padding: 8px;
+            position: fixed;
+            bottom: 90px;
+            left: 80%;
+            transform: translateX(-50%); /* Center horizontally */
+            font-size: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            z-index: 100; /* Ensure button stays on top */
+        }
+
+        #addItemButton:hover {
+            background-color: #444;
+        }
+
+        .items-box {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+       .name {
+            font-weight: bold;
+            margin-top: 13px;
+        }
+        p {
+            font-weight: lighter;
+        }
+        /* button for smaller screens */
+        @media screen and (max-width: 768px) {
+            .box {
+                width: calc(33.33% - 40px); 
+                gap: 0px;
+            }
+        }
+
+        /* button position for even smaller screens */
+        @media screen and (max-width: 480px) {
+            .box {
+                width: calc(50% - 40px); 
+            }
+        }
 
     </style>
 </head>
+
 <body>
     <header>
         <div style="padding: 10px;">
@@ -181,7 +204,7 @@
         </div>
     </header>
     <div id="body-container">
-        <div style=";">
+        <div>
             <!-- Content before added items -->
             <h3>Welcome</h3>
             <p>Your summary: <span id="itemCount">0</span> Total Inventory</p>
@@ -193,13 +216,30 @@
         </div>
 
         <div class="items-box">
-            <div class="ibox"></div>
-            <div class="ibox"></div>
-            <div class="ibox"></div>
-            <div class="ibox"></div>
+            <!-- Sample iboxes -->
+            <div class="ibox">
+                <img class="i-icon" src="/Images/icons/icons8-items-50.png" alt="icon">
+                <p class="name">All Items</p>
+                <p>1000</p>
+            </div>
+            <div class="ibox">
+                <img class="i-icon" src="/Images/icons/icons8-items-50.png" alt="icon">
+                <p class="name">Profit $ Loss</p>
+                <p>#4,800 #2,800</p>
+            </div>
+            <div class="ibox">
+                <img class="i-icon" src="/Images/icons/icons8-items-50.png" alt="icon">
+                <p class="name">Reports</p>
+                <p>Daily, Monthly, Yearly</p>
+            </div>
+            <div class="ibox">
+                <img class="i-icon" src="/Images/icons/icons8-items-50.png" alt="icon">
+                <p class="name">Get Help</p>
+            </div>
         </div>
         <button id="addItemButton">Add Item</button>
     </div>
+
     <footer>
         <a href="./Page2.html"><img src="/Images/icons/icons8-dashboard-32.png" alt="dashboard icon"></a>
         <a href="./Item.html"><img src="/Images/icons/icons8-items-50.png" alt="items icon"></a>
