@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color:  #d7cece;;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .account-info {
+            margin-bottom: 30px;
+        }
+
+        .account-info h2 {
+            margin-bottom: 10px;
+        }
+
+        .account-info table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .account-info table th,
+        .account-info table td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        .account-info table th {
+            background-color: #f5f5f5;
+        }
+
+        .change-password-form {
+            margin-top: 30px;
+        }
+
+        .change-password-form input[type="password"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .change-password-form input[type="submit"] {
+            background-color: rgb(250, 145, 16);
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .change-password-form input[type="submit"]:hover {
+            background-color: #e09c37; 
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>My Account</h1>
+
+    <div class="account-info">
+        <h2>Profit/Loss Summary</h2>
+        <table>
+            <tr>
+                <th>Month</th>
+                <th>Profit</th>
+                <th>Loss</th>
+            </tr>
+           
+            <tr>
+                <td>January 2024</td>
+                <td>$500</td>
+                <td>$200</td>
+            </tr>
+    
+        </table>
+    </div>
+
+    <div class="account-info">
+        <h2>Order History</h2>
+        <table>
+            <tr>
+                <th>Order ID</th>
+                <th>Item</th>
+                <th>Price</th>
+                <th>Status</th>
+            </tr>
+            <!-- Placeholder data, replace with actual user data -->
+            <tr>
+                <td>12345</td>
+                <td>Product A</td>
+                <td>$50</td>
+                <td>Delivered</td>
+            </tr>
+            <!-- Add more rows as needed -->
+        </table>
+    </div>
+
+    <div class="change-password-form">
+        <h2>Change Password</h2>
+        <form action="#" method="post">
+            <input type="password" name="current_password" placeholder="Current Password" required>
+            <input type="password" name="new_password" placeholder="New Password" required>
+            <input type="password" name="confirm_new_password" placeholder="Confirm New Password" required>
+            <input type="submit" value="Change Password">
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

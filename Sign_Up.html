@@ -115,17 +115,17 @@
         <h1>Sign Up</h1>
         <h5>Please fill the form below to get started</h5>
 
-        <form action="#" method="post">
-            <input type="text" name="name" placeholder="Business Name" required>
-            <input type="email" name="email" placeholder="Business Email" required>
-            <input type="password" name="password" placeholder="Password" required>
-            <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+        <form action="Item.html" method="post" onsubmit="return validateForm()">
+            <input type="text" id="name" name="name" placeholder="Business Name" required>
+            <input type="email" id="email" name="email" placeholder="Business Email" required>
+            <input type="password" id="password" name="password" placeholder="Password" required>
+            <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm Password" required>
 
             <section>
                 <input type="checkbox" id="subscribe" name="subscribe"><label for="subscribe">Keep Me signed in</label>
             </section>
 
-            <div>By clicking sign up, you agree to our <a href="#">Terms and Conditions</a></div>
+            <div>By clicking sign up, you agree to our <a href="./Terms-and-Conditions.html">Terms and Conditions</a></div>
             <input type="submit" value="Sign Up">
 
             <button class="social-button" onclick="continueWithGoogle()">
@@ -145,11 +145,60 @@
 
     <script>
         function continueWithGoogle() {
-            window.location.href = "https://accounts.google.com/";
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+            var confirm_password = document.getElementById("confirm_password").value;
+            
+            if (name.trim() === "" || email.trim() === "" || password.trim() === "" || confirm_password.trim() === "") {
+                alert("Please fill in all fields.");
+                return false;
+            }
+            
+            if (password !== confirm_password) {
+                alert("Passwords do not match.");
+                return false;
+            }
+            
+            window.location.href = "Item.html?name=" + encodeURIComponent(name) + "&email=" + encodeURIComponent(email);
         }
 
         function continueWithFacebook() {
-            window.location.href = "https://www.facebook.com/";
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+            var confirm_password = document.getElementById("confirm_password").value;
+            
+            if (name.trim() === "" || email.trim() === "" || password.trim() === "" || confirm_password.trim() === "") {
+                alert("Please fill in all fields.");
+                return false;
+            }
+            
+            if (password !== confirm_password) {
+                alert("Passwords do not match.");
+                return false;
+            }
+            
+            window.location.href = "Item.html?name=" + encodeURIComponent(name) + "&email=" + encodeURIComponent(email);
+        }
+        
+        function validateForm() {
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+            var confirm_password = document.getElementById("confirm_password").value;
+            
+            if (name.trim() === "" || email.trim() === "" || password.trim() === "" || confirm_password.trim() === "") {
+                alert("Please fill in all fields.");
+                return false;
+            }
+            
+            if (password !== confirm_password) {
+                alert("Passwords do not match.");
+                return false;
+            }
+            
+            return true;
         }
     </script>
 </body>

@@ -3,32 +3,201 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Record Item</title>
-
-
+    <title>Summary of items</title>
     <style>
-        h4 {
-            font-size: large;
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f6f6f6;
         }
 
-        .file{
-            
-        }        
+        header {
+            display: flex;
+            justify-content: space-between;
+            position: fixed;
+            width: 100%;
+            align-items: center;
+            background-color: #565430;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 100; /* Ensure header stays on top */
+        }
+
+        header:hover, footer:hover {
+            cursor: pointer;
+        }
+        #icon {
+            display: flex;
+            justify-items: space-between;
+        }
+
+        header img {
+            height: 30px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #b9b651;
+        }
+
+        footer {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #565430;
+            padding: 10px;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        footer img {
+            height: 30px;
+        }
+
+        #logo {
+            font-size: xx-large;
+        }
+
+        #body-container {
+            padding: 60px 20px 70px 20px;
+        }
+
+        #addItemButton {
+            background-color: gray;
+            color: white;
+            width: 100px;
+            padding: 8px;
+            position: fixed;
+            bottom: 90px;
+            left: 80%;
+            transform: translateX(-50%);
+            font-size: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            z-index: 100;
+        }
+
+        #addItemButton:hover {
+            background-color: #444;
+        }
+
+        #signUpButton {
+            padding: 3px;
+        }
+
+        #image-container {
+            padding: 40px;
+            width: 100px;
+            border: 1px solid #404040;
+            border-radius: 20px;
+            display: inline-block;
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+    #selectedImage {
+        max-width: 100%; /* Ensure the image fits within the container */
+        max-height: 100%; /* Ensure the image fits within the container */
+    }
+        /* button for smaller screens */
+        @media screen and (max-width: 768px) {
+            .box {
+                width: calc(33.33% - 40px);
+                gap: 0px;
+            }
+        }
+
+        /* button position for even smaller screens */
+        @media screen and (max-width: 480px) {
+            .box {
+                width: calc(50% - 40px);
+            }
+        }
+
     </style>
 </head>
+
 <body>
+<header>
+    <div style="padding: 10px;">
+        <a href="./Item.html">
+            <img id="logo" src="/Images/icons/logo.png" alt="items icon">
+        </a>
+    </div>
+
+    <div style="padding: 10px;" id="icon">
+        <span> <img src="/Images/icons/icons8-notification-48.png" alt="notifications icon"> </span>
+        <span style="margin-left: 40px;"> <img src="/Images/icons/icons8-account-60.png" alt="profile icon"> </span>
+    </div>
+</header>
+
+<div id="body-container">
+    <div class="container-box" id="itemContainer">
+
+    </div>
     <h1>Record a new item</h1>
     <h4>Upload Picture 5mb (max)</h4>
 
-    <button>
+    <button id="signUpButton">
         <div class="file">
-            <label for="photo" aria-required=""></i></label> 
-            <input type="file" id="photo" name="photo" accept="image/*" img src="./Images/icons/icons8-image-64.png" alt="image"> 
+            <label for="photo" aria-required=""></label>
+            <input type="file" id="photo" name="photo" accept="image/*" src="./Images/icons/icons8-image-64.png"
+                   alt="image">
         </div>
+</div>
 
-        <div>
-            <input type="submit" value="Sign Up">
-        </div>
-    </button>
+<div id="image-container">
+    <img id="selectedImage" src="/Images/icons/icons8-image-64.png" alt="">
+</div>
+
+<button id="addItemButton">Sign Up</button>
+
+
+<footer>
+    <a href="./Page2.html"><img src="/Images/icons/icons8-dashboard-32.png" alt="dashboard icon"></a>
+    <a href="./Item.html"><img src="/Images/icons/icons8-items-50.png" alt="items icon"></a>
+    <a href="./Sign-In.html"><img src="/Images/icons/icons8-search-64.png" alt="search icon"></a>
+    <img src="/Images/icons/icons8-menu-24.png" alt="menu icon">
+</footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const addItemButton = document.getElementById('addItemButton');
+        const photoInput = document.getElementById('photo');
+        const selectedImage = document.getElementById('selectedImage');
+
+        addItemButton.addEventListener('click', function () {
+            addItemButton.textContent = 'Sign Up Successful';
+
+            // Set a timeout to revert the button text back to "Sign Up" after 20 seconds (20000 milliseconds)
+            setTimeout(function () {
+                addItemButton.textContent = 'Sign Up';
+            }, 20000); // 20 seconds
+        });
+
+        function displaySelectedImage(event) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function (event) {
+                selectedImage.src = event.target.result;
+            };
+
+            reader.readAsDataURL(file);
+        }
+
+        // Trigger displaySelectedImage function when a file is selected
+        photoInput.addEventListener('change', displaySelectedImage);
+    });
+</script>
+
 </body>
 </html>
